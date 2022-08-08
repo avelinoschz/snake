@@ -18,7 +18,7 @@ module Model
   class Grid < Struct.new(:rows, :cols)
   end
 
-  class State < Struct.new(:snake, :food, :grid)
+  class State < Struct.new(:snake, :food, :grid, :next_direction)
   end
 
   # this is a class (or module) method
