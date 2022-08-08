@@ -1,4 +1,11 @@
 module Model
+  module Direction
+    UP = :up
+    RIGHT = :right
+    DOWN = :down
+    LEFT = :left
+  end
+  
   class Coord < Struct.new(:row, :col)
   end 
   
@@ -23,6 +30,7 @@ module Model
       ]),
       Model::Food.new(4,4),
       Model::Grid.new(8,12)
+      Direction::DOWN
     )
   end
 end
