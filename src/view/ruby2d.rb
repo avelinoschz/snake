@@ -1,6 +1,11 @@
-require "ruby2d"
+# frozen_string_literal: true
 
+require 'ruby2d'
+
+# View - wraps all the view related elements
 module View
+  # Ruby2dView - is the abstraction layer interacting
+  # with the ruby2d lib
   class Ruby2dView
     def initialize
       @pixel_size = 50
@@ -9,8 +14,8 @@ module View
     def render(state)
       extend Ruby2D::DSL
       set(
-        title: "Snake", 
-        width: @pixel_size * state.grid.cols, 
+        title: 'Snake',
+        width: @pixel_size * state.grid.cols,
         height: @pixel_size * state.grid.rows
       )
       render_snake(state)
@@ -27,7 +32,7 @@ module View
         x: food.col * @pixel_size,
         y: food.row * @pixel_size,
         size: @pixel_size,
-        color: "yellow"
+        color: 'yellow'
       )
     end
 
@@ -39,10 +44,9 @@ module View
           x: pos.col * @pixel_size,
           y: pos.row * @pixel_size,
           size: @pixel_size,
-          color: "green"
+          color: 'green'
         )
       end
     end
   end
 end
-

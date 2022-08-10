@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
+# Actions - module for all the snake actions
 module Actions
   def self.move_snake(state)
-    next_direction = state.next_direction
+    # next_direction = state.next_direction
     next_position = calc_next_position(state)
     if position_is_valid?(state, next_position)
       move_snake_to(state, next_position)

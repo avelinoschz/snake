@@ -1,6 +1,9 @@
-require_relative "view/ruby2d"
-require_relative "model/state"
+# frozen_string_literal: true
 
+require_relative 'view/ruby2d'
+require_relative 'model/state'
+
+# App - main class in charge of running the game
 class App
   def start
     view = View::Ruby2dView.new
