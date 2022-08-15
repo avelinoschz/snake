@@ -11,45 +11,45 @@ module Actions
       end_game(state)
     end
   end
-end
 
-private
+  private
 
-def calc_next_position(state)
-  curr_position = state.snake.positions.first
-  case state.next_direction
-  when UP
-    return Model::Coord.new(
-      curr_position.row - 1,
-      curr_position.col
-    )
-  when RIGHT
-    return Model::Coord.new(
-      curr_position.row,
-      curr_position.col + 1
-    )
-  when DOWN
-    return Model::Coord.new(
-      curr_position.row + 1,
-      curr_position.col
-    )
-  when LEFT
-    return Model::Coord.new(
-      curr_position.row,
-      curr_position.col - 1
-    )
+  def self.calc_next_position(state)
+    curr_position = state.snake.positions.first
+    case state.next_direction
+    when Model::Direction::UP
+      return Model::Coord.new(
+        curr_position.row - 1,
+        curr_position.col
+      )
+    when Model::Direction::RIGHT
+      return Model::Coord.new(
+        curr_position.row,
+        curr_position.col + 1
+      )
+    when Model::Direction::DOWN
+      return Model::Coord.new(
+        curr_position.row + 1,
+        curr_position.col
+      )
+    when Model::Direction::LEFT
+      return Model::Coord.new(
+        curr_position.row,
+        curr_position.col - 1
+      )
+    end
   end
 
-  def position_is_valid?(state, position)
+  def self.position_is_valid?(state, position)
     # verify is not colliding with the grid edge
-    is_invalid = (position.row >= state.grid.row || position.row < 0) || (position.col >= state.grid.cols || position.col < 0)
+    is_invalid = (position.row >= state.grid.rows || position.row < 0) || (position.col >= state.grid.cols || position.col < 0)
     return false if is_invalid
     # verify is not colliding with a current snake position
     return !(state.snake.positions.include? position) 
   end
 
 
-  def move_snake_to(state, next_position)
+  def self.move_snake_to(state, next_position)
     # the head moves to the next position based on the direction
     # then all the other body points follow along, except the tail
     # whenever the snake is moving, the tail or last coord, needs to be removed
@@ -59,7 +59,7 @@ def calc_next_position(state)
     state
   end
 
-  def end_game(state)
+  def self.end_game(state)
     state.game_over = true
     state
   end
