@@ -20,7 +20,7 @@ class App
     loop do
       # trigger movement
       @state = Actions::move_snake(@state)
-      view.render_view(@state)
+      view.update(@state)
       # stops and moves  every half second
       sleep 0.5
     end
