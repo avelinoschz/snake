@@ -21,7 +21,7 @@ module View
       show
     end
 
-    def update(state)
+    def render(state)
       render_snake(state)
       render_food(state)
     end
